@@ -72,6 +72,12 @@ app.post('/recipes', jsonParser, (req, res) => {
   res.status(201).json(item);
 });
 
+// Delete Recipes
+app.delete('/recipes/:id', (req, res) => {
+  Recipes.delete(req.params.id);
+  console.log(`Deleted recipe \`${req.params.ID}\``);
+  res.status(204).end();
+});
 
 app.get('/recipes', (req, res) => {
   res.json(Recipes.get());
